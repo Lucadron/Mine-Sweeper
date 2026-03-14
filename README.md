@@ -1,8 +1,8 @@
 <div align="center">
 
-# 💣 Mayın Tarlası — Retro Edition
+# 💣 Minesweeper — Retro Edition
 
-**Windows 95 estetiği × Modern web mühendisliği**
+**Windows 95 aesthetics × Modern web engineering**
 
 React 18 · Web Audio API · Portable HTML
 
@@ -15,66 +15,70 @@ React 18 · Web Audio API · Portable HTML
 
 <br>
 
-[🎮 Oyna](#kurulum) · [📸 Ekran Görüntüleri](#ekran-görüntüleri) · [⚙️ Özellikler](#özellikler) · [🏗️ Mimari](#teknik-mimari)
+[🎮 Play](#installation) · [📸 Screenshots](#screenshots) · [⚙️ Features](#features) · [🏗️ Architecture](#technical-architecture)
+
+<br>
+
+🌐 **[Türkçe README için tıklayın / Read in Turkish](README.TR.md)**
 
 </div>
 
 ---
 
-## Hakkında
+## About
 
-Klasik Windows Mayın Tarlası oyununun, modern web teknolojileriyle sıfırdan yazılmış tam fonksiyonel bir rekreasyonudur. Tek bir `index.html` dosyasında çalışır — sunucu, build adımı veya bağımlılık kurulumu gerekmez.
+A fully functional recreation of the classic Windows Minesweeper game, written from scratch using modern web technologies. Runs in a single `index.html` file — no server, no build step, no dependency installation required.
 
-## Özellikler
+## Features
 
-### 🎮 Oyun Motoru
-- **İlk Tıklama Koruması** — İlk tıklanan hücre ve 8 komşusu asla mayın olmaz; mayınlar ilk tıklamadan sonra yerleştirilir
-- **BFS Flood Fill** — Stack overflow riski olmayan kuyruk tabanlı algoritma ile boş alan açma
-- **Chording** — Açık sayılı hücreye tıklayarak (sol veya orta tık) komşu hücreleri toplu açma
-- **Win/Loss Detection** — Kapalı hücre sayısı = mayın sayısı → kazanç; mayına basma → tüm mayınlar görünür
+### 🎮 Game Engine
+- **First-Click Protection** — The first clicked cell and its 8 neighbors are never mines; mines are placed after the first click
+- **BFS Flood Fill** — Queue-based algorithm for opening empty areas with no risk of stack overflow
+- **Chording** — Batch-open neighboring cells by clicking (left or middle click) on an already-revealed numbered cell
+- **Win/Loss Detection** — Closed cell count = mine count → victory; stepping on a mine → all mines revealed
 
-### 🎛️ Konfigürasyon
-| Zorluk | Grid | Mayın |
-|--------|------|-------|
-| Başlangıç | 9×9 | 10 |
-| Orta | 16×16 | 40 |
-| Uzman | 30×16 | 99 |
-| **Özel** | **9–60 × 9–60** | **1–989** |
+### 🎛️ Configuration
+| Difficulty | Grid | Mines |
+|------------|------|-------|
+| Beginner | 9×9 | 10 |
+| Intermediate | 16×16 | 40 |
+| Expert | 30×16 | 99 |
+| **Custom** | **9–60 × 9–60** | **1–989** |
 
-### 🎨 İki Tema
-- **Neon (Koyu)** — Koyu mavi-mor arka plan, neon parıltılı sayılar, glow efektleri
-- **Win95 (Gri)** — Klasik Windows 95 estetiği: `inset/outset` 3D border'lar, mavi başlık çubuğu, `#c0c0c0` zemin
+### 🎨 Two Themes
+- **Neon (Dark)** — Dark blue-purple background, neon-glowing numbers, glow effects
+- **Win95 (Gray)** — Classic Windows 95 aesthetic: `inset/outset` 3D borders, blue title bar, `#c0c0c0` background
 
-### 🔊 Ses Efektleri (Web Audio API)
-Tüm sesler prosedürel olarak üretilir — harici dosya gerektirmez:
-- Hücre açma: kısa, tatmin edici tık + micro bass thump
-- Flood fill: yükselen cascade melodisi
-- Bayrak koyma/kaldırma: metalik tık
-- **Patlama**: 5 katmanlı sinematik ses — derin bass boom + distorted crunch + beyaz gürültü şarapnel + tiz crack + gecikmeli echo boom
-- Kazanma: C-E-G-C arpej fanfar
-- Sağ üstte 🔊/🔇 toggle ile açılıp kapanabilir
+### 🔊 Sound Effects (Web Audio API)
+All sounds are generated procedurally — no external files required:
+- Cell open: short, satisfying click + micro bass thump
+- Flood fill: ascending cascade melody
+- Flag place/remove: metallic click
+- **Explosion**: 5-layer cinematic sound — deep bass boom + distorted crunch + white noise shrapnel + sharp crack + delayed echo boom
+- Win: C-E-G-C arpeggio fanfare
+- Toggle on/off with the 🔊/🔇 button in the top right
 
-### ✨ Vuruş Hissiyatı
-- Hover'da scale + glow efekti
-- Tıklamada scale-down basılma hissi
-- Açılan hücrelerde bounce animasyonu
-- Bayrak dikme spring animasyonu
-- Patlama: ekran sarsıntısı + kırmızı flash + parçacık sistemi
-- Kazanma: altın flash + konfeti parçacıkları
+### ✨ Game Feel
+- Scale + glow effect on hover
+- Scale-down press feel on click
+- Bounce animation on revealed cells
+- Spring animation when planting a flag
+- Explosion: screen shake + red flash + particle system
+- Win: gold flash + confetti particles
 
-### 📐 Responsive Tasarım
-- Grid, ekranın tamamına dinamik olarak yayılır
-- Genişlik öncelikli boyutlandırma — büyük gridlerde yanlarda boşluk kalmaz
-- Dikey taşma durumunda scroll desteği
-- Pencere boyutu değiştiğinde otomatik yeniden hesaplama
+### 📐 Responsive Design
+- Grid dynamically fills the entire screen
+- Width-first sizing — no side gaps on large grids
+- Scroll support when content overflows vertically
+- Auto-recalculation on window resize
 
-## Kurulum
+## Installation
 
 ```bash
-# Repoyu klonla
+# Clone the repo
 git clone https://github.com/Lucadron/Mine-Sweeper.git
 
-# index.html dosyasını tarayıcıda aç
+# Open index.html in your browser
 # Windows
 start index.html
 
@@ -85,58 +89,59 @@ open index.html
 xdg-open index.html
 ```
 
-Hepsi bu kadar. Sunucu yok, `npm install` yok, build yok.
+That's it. No server, no `npm install`, no build.
 
-## Kontroller
+## Controls
 
-| Eylem | Kontrol |
-|-------|---------|
-| Hücre aç | Sol tık |
-| Bayrak koy/kaldır | Sağ tık |
-| Chording | Açık sayılı hücreye sol tık veya orta tık |
-| Yeni oyun | 😊 butonuna tıkla veya "Yeni Oyun" butonu |
-| Tema değiştir | 🌙/☀️ butonu |
-| Ses aç/kapat | 🔊/🔇 butonu |
+| Action | Control |
+|--------|---------|
+| Open cell | Left click |
+| Place/remove flag | Right click |
+| Chording | Left or middle click on a revealed numbered cell |
+| New game | Click the 😊 button or the "New Game" button |
+| Change theme | 🌙/☀️ button |
+| Toggle sound | 🔊/🔇 button |
 
-## Teknik Mimari
+## Technical Architecture
 
-### Teknoloji
-- **React 18** — CDN üzerinden, production build
-- **Babel Standalone** — Tarayıcıda JSX transpilation
-- **Web Audio API** — Prosedürel ses sentezi
-- **CSS Variables** — Tema sistemi
+### Technologies
+- **React 18** — via CDN, production build
+- **Babel Standalone** — In-browser JSX transpilation
+- **Web Audio API** — Procedural sound synthesis
+- **CSS Variables** — Theme system
 
-### Performans Optimizasyonları
-- `React.memo` ile hücre memoization — yalnızca değişen hücreler render edilir
-- `useMemo` ile grid hesaplama ve stil önbellekleme
-- `useCallback` ile event handler referans kararlılığı
-- 60×60 (3600 hücre) gridde sorunsuz çalışır
+### Performance Optimizations
+- Cell memoization with `React.memo` — only changed cells are re-rendered
+- Grid calculation and style caching with `useMemo`
+- Event handler reference stability with `useCallback`
+- Runs smoothly on 60×60 (3600 cell) grids
 
-### Algoritma Karmaşıklığı
-| İşlem | Karmaşıklık |
-|-------|-------------|
-| Mayın yerleştirme | O(W×H) |
-| Flood Fill (BFS) | O(W×H) en kötü, O(k) ortalama |
-| Komşu sayımı | O(W×H) |
+### Algorithm Complexity
+| Operation | Complexity |
+|-----------|------------|
+| Mine placement | O(W×H) |
+| Flood Fill (BFS) | O(W×H) worst case, O(k) average |
+| Neighbor counting | O(W×H) |
 | Win check | O(W×H) |
-| Tek tıklama (ortalama) | O(k) where k ≪ N |
+| Single click (average) | O(k) where k ≪ N |
 
-### Dosya Yapısı
+### File Structure
 ```
 Mine-Sweeper/
-├── index.html    # Tüm uygulama — tek dosya, sıfır bağımlılık
+├── index.html    # The entire app — single file, zero dependencies
 ├── README.md
+├── README.TR.md
 └── LICENSE
 ```
 
-## Lisans
+## License
 
-MIT License — detaylar için [LICENSE](LICENSE) dosyasına bakın.
+MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
 <div align="center">
 
-**Lucadron** tarafından 💣 ile yapıldı
+Made with 💣 by **Lucadron**
 
 </div>
